@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Currency Exchange</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Currency Exchange Rates</h1>
+  <% if (error) { %>
+    <p><%= error %></p>
+  <% } else { %>
+    <ul>
+      <% Object.entries(rates).forEach(([currency, rate]) => { %>
+        <li><%= currency %> - <%= rate %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+</body>
+</html>
