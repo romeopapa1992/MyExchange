@@ -6,15 +6,19 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <h1>Currency Exchange Rates</h1>
-  <% if (error) { %>
-    <p><%= error %></p>
-  <% } else { %>
-    <ul>
-      <% Object.entries(rates).forEach(([currency, rate]) => { %>
-        <li><%= currency %> - <%= rate %></li>
-      <% }) %>
-    </ul>
-  <% } %>
+  <div class="exchange-window">
+    <h1>Currency Exchange Rates</h1>
+    <form method="POST" action="/">
+      <label for="currency">Enter Currency Code: </label>
+      <input type="text" id="currency" name="currency" required>
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error-text"><%= error %></p>
+    <% } else if (currency && rate) { %>
+      <p>Exchange rate for <strong><%= currency %></strong>: <%= rate %></p>   
+    <% } %>
+  </div>
 </body>
 </html>
